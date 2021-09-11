@@ -6,29 +6,39 @@
 //
 
 import Foundation
-struct Axe {
-    var name = "Hache"
-    var Atk = 12
+enum WeaponType {
+    case axe
+    case wand
+    case dagger
+    case staff
+    case bow
+}
+
+struct Weapon {
+    var name: String
+    var atk: Int
+    var type: WeaponType
     
-}
+    init(type: WeaponType) {
+        self.type = type
+        switch type {
+        case .axe:
+            self.name = "Axe"
+            self.atk = 6
+        case .wand:
+            self.name = "Wand"
+            self.atk = 9
+        case .dagger:
+            self.name = "Dagger"
+            self.atk = 8
+        case .staff:
+            self.name = "Staff"
+            self.atk = 7
+        case .bow:
+            self.name = "Bow"
+            self.atk = 7
+        
+        }
+    }
 
-struct Wand {
-    var name = "Baguette"
-    var Atk = 9
-}
-
-
-struct Dagger {
-    var name = "Dague"
-    var Atk = 8
-}
-
-struct Staff {
-    var name = "Bâton"
-    var atk = 7
-}
-
-struct Bow {
-    var name = "Arc"
-    var atk = 7
 }
