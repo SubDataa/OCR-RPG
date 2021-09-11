@@ -19,6 +19,7 @@ struct Weapon {
     var atk: Int
     var type: WeaponType
     
+//Create Weapon
     init(type: WeaponType) {
         self.type = type
         switch type {

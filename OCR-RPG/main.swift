@@ -102,17 +102,10 @@ import Foundation
 func startGame() {
     print("Bienvenue dans OCR RPG")
     print("Avant de vous rendre dans l'arene vous devez selectionner votre équipe.")
-
-    print("Player 1 : Choose your characters")
-    let team1 = Team()//.createTeam()
-    team1.createTeam()
-    print("Player 2 : Choose your characters")
-    let team2 = Team()//.createTeam()
-    team2.createTeam()
+    let game = Game()
+    game.createTeams()
+    game.battle()
     
-    print("Voici la composition des équipes")
-    print("Player 1 : \(team1.team[0].name), \(team1.team[1].name), \(team1.team[2].name)")
-    print("Player 2 : \(team2.team[0].name), \(team2.team[1].name), \(team2.team[2].name)")
 }
 
 startGame()

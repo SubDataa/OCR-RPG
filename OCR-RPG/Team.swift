@@ -10,14 +10,14 @@ class Team {
     
     var team = [Character]()
     
-    func createTeam() {
+    func fillTeam() {
         while team.count < 3 {
             selectCharacter()
         }
         print("This is your team : \(team[0].name), \(team[1].name), \(team[2].name).")
     }
     
-    
+
     func selectCharacter() {
         print("Entrez a pour le Guerrier, b pour le Mage, c pour le Voleur, d pour le Prêtre ou e pour le Chasseur.")
         let selectedchar = readLine()?.lowercased()

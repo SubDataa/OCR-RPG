@@ -16,11 +16,13 @@ enum CharacterType {
 }
 
 struct Character {
-    private(set) var name: String
+    var name: String
     var hp: Int
     var spell: String
     var type: CharacterType
     var weapon: Weapon
+    
+//Create Characters
     init(type: CharacterType) {
         self.type = type
         switch type {
