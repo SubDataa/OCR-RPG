@@ -19,7 +19,6 @@ class Team {
     
     
     func selectCharacter() {
-        print("Choose your character")
         print("Entrez a pour le Guerrier, b pour le Mage, c pour le Voleur, d pour le Prêtre ou e pour le Chasseur.")
         let selectedchar = readLine()?.lowercased()
         

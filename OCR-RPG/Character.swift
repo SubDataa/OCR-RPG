@@ -27,7 +27,7 @@ struct Character {
         case .Warrior:
             self.name = "Warrior"
             self.hp = 60
-            self.spell = "Coup d'hache"
+            self.spell = "Mortal Strike"
             self.weapon = Weapon(type: .axe)
         case .Mage:
             self.name = "Mage"
