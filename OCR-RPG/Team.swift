@@ -8,29 +8,37 @@
 import Foundation
 class Team {
     
-    var team = [CharacterType]()
+    var team = [Character]()
     
-    func createTeam() -> [CharacterType] {
+    func createTeam() {
+        while team.count < 3 {
+            selectCharacter()
+        }
+        print("This is your team : \(team[0].name), \(team[1].name), \(team[2].name).")
+    }
+    
+    
+    func selectCharacter() {
+        print("Choose your character")
+        print("Entrez a pour le Guerrier, b pour le Mage, c pour le Voleur, d pour le Prêtre ou e pour le Chasseur.")
+        let selectedchar = readLine()
         
-        let selectedchar1 = readLine()
-        
-            if selectedchar1 == "a" {
+            if selectedchar == "a" {
                 print("Vous avez selectionné le Guerrier")
-                team.append(CharacterType.Warrior)
-            } else  if selectedchar1 == "b" {
+                team.append(Character(type: .Warrior))
+            } else  if selectedchar == "b" {
                 print("Vous avez selectionné le Mage")
-                team.append(CharacterType.Mage)
-            } else if selectedchar1 == "c" {
+                team.append(Character(type: .Mage))
+            } else if selectedchar == "c" {
                 print("Vous avez selectionné le Voleur")
-                team.append(CharacterType.Rogue)
-            } else if selectedchar1 == "d" {
+                team.append(Character(type: .Rogue))
+            } else if selectedchar == "d" {
                 print("Vous avez selectionné le Prêtre")
-                team.append(CharacterType.Priest)
-            } else if selectedchar1 == "e" {
+                team.append(Character(type: .Priest))
+            } else if selectedchar == "e" {
                 print("Vous avez selectionné le Chasseur")
-                team.append(CharacterType.Hunter)
+                team.append(Character(type: .Hunter))
             }
-        
-        return team
+
     }
 }

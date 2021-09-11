@@ -22,6 +22,7 @@ struct Character {
     var type: CharacterType
     
     init(type: CharacterType) {
+        self.type = type
         switch type {
         case .Warrior:
             self.name = "Warrior"
