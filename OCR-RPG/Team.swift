@@ -21,24 +21,26 @@ class Team {
     func selectCharacter() {
         print("Choose your character")
         print("Entrez a pour le Guerrier, b pour le Mage, c pour le Voleur, d pour le Prêtre ou e pour le Chasseur.")
-        let selectedchar = readLine()
+        let selectedchar = readLine()?.lowercased()
         
-            if selectedchar == "a" {
-                print("Vous avez selectionné le Guerrier")
-                team.append(Character(type: .Warrior))
-            } else  if selectedchar == "b" {
-                print("Vous avez selectionné le Mage")
-                team.append(Character(type: .Mage))
-            } else if selectedchar == "c" {
-                print("Vous avez selectionné le Voleur")
-                team.append(Character(type: .Rogue))
-            } else if selectedchar == "d" {
-                print("Vous avez selectionné le Prêtre")
-                team.append(Character(type: .Priest))
-            } else if selectedchar == "e" {
-                print("Vous avez selectionné le Chasseur")
-                team.append(Character(type: .Hunter))
-            }
-
+        switch selectedchar {
+        case "a":
+            print("Vous avez selectionné le Guerrier")
+            team.append(Character(type: .Warrior))
+        case "b":
+            print("Vous avez selectionné le Mage")
+            team.append(Character(type: .Mage))
+        case "c":
+            print("Vous avez selectionné le Voleur")
+            team.append(Character(type: .Rogue))
+        case "d":
+            print("Vous avez selectionné le Prêtre")
+            team.append(Character(type: .Priest))
+        case "e":
+            print("Vous avez selectionné le Chasseur")
+            team.append(Character(type: .Hunter))
+        default:
+            print("Invalid choice!!!!!!!")
+        }
     }
 }
