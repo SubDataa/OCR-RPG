@@ -19,23 +19,23 @@ class Team {
     
 
     func selectCharacter() {
-        print("Entrez a pour le Guerrier, b pour le Mage, c pour le Voleur, d pour le Prêtre ou e pour le Chasseur.")
-        let selectedchar = readLine()?.lowercased()
+        print("Entrez 1 pour le Guerrier, 2 pour le Mage, 3 pour le Voleur, 4 pour le Prêtre ou 5 pour le Chasseur.")
+        let selectedchar = readLine()
         
         switch selectedchar {
-        case "a":
+        case "1":
             print("Vous avez selectionné le Guerrier")
             team.append(Character(type: .Warrior))
-        case "b":
+        case "2":
             print("Vous avez selectionné le Mage")
             team.append(Character(type: .Mage))
-        case "c":
+        case "3":
             print("Vous avez selectionné le Voleur")
             team.append(Character(type: .Rogue))
-        case "d":
+        case "4":
             print("Vous avez selectionné le Prêtre")
             team.append(Character(type: .Priest))
-        case "e":
+        case "5":
             print("Vous avez selectionné le Chasseur")
             team.append(Character(type: .Hunter))
         default:
