@@ -23,13 +23,14 @@ class Character {
     var weapon: Weapon
     var canATK: Bool
     
+    
 //Create Characters
     init(type: CharacterType) {
         self.type = type
         switch type {
         case .Warrior:
             self.name = "Warrior"
-            self.hp = 60
+            self.hp = 5
             self.spell = "Mortal Strike"
             self.weapon = Weapon(type: .axe)
             self.canATK = true
@@ -59,5 +60,13 @@ class Character {
             self.canATK = true
         }
     }
+    
+    func isDead() -> Bool {
+        if self.hp <= 0 {
+            return true
+        }
+        return false
+    }
+
 }
 
