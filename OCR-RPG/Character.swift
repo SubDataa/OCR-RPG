@@ -16,12 +16,15 @@ enum CharacterType {
 }
 
 class Character {
-    var name: String
+    var categories: String
     var hp: Int
     var spell: String
     var type: CharacterType
     var weapon: Weapon
     var canATK: Bool
+    var name: String
+    
+
     
     
 //Create Characters
@@ -29,37 +32,45 @@ class Character {
         self.type = type
         switch type {
         case .Warrior:
-            self.name = "Warrior"
+            self.categories = "Warrior"
             self.hp = 5
             self.spell = "Mortal Strike"
             self.weapon = Weapon(type: .axe)
             self.canATK = true
+            self.name = ""
         case .Mage:
-            self.name = "Mage"
+            self.categories = "Mage"
             self.hp = 40
             self.spell = "Fire bolt"
             self.weapon = Weapon(type: .wand)
             self.canATK = true
+            self.name = ""
         case .Rogue:
-            self.name = "Rogue"
+            self.categories = "Rogue"
             self.hp = 50
             self.spell = "Embush"
             self.weapon = Weapon(type: .dagger)
             self.canATK = true
+            self.name = ""
         case .Priest:
-            self.name = "Priest"
+            self.categories = "Priest"
             self.hp = 30
             self.spell = "Heal"
             self.weapon = Weapon(type: .staff)
             self.canATK = false
+            self.name = ""
         case .Hunter:
-            self.name = "Hunter"
+            self.categories = "Hunter"
             self.hp = 45
             self.spell = "Aimed shot"
             self.weapon = Weapon(type: .bow)
             self.canATK = true
+            self.name = ""
+
         }
     }
+    
+   
     
     func isDead() -> Bool {
         if self.hp <= 0 {
@@ -67,6 +78,7 @@ class Character {
         }
         return false
     }
+    
 
 }
 

@@ -15,7 +15,7 @@ class Game {
     
     func displayTeam(team: Team) {
         for (index,item) in team.team.enumerated() {
-            print(index+1,item.name)
+            print(index+1,item.categories)
         }
        
     }
@@ -38,6 +38,7 @@ class Game {
     
         print("Voici la composition des équipes")
         displayTeam(team: p1)
+        print(p1.team[0].name)
         print("------")
         displayTeam(team: p2)
     }
@@ -48,15 +49,15 @@ class Game {
         
         while isGameOver() == false {
             //Turn Player 1
-            turn(player1: p1, player2: p2)
-            var fini = isGameOver()
-            if fini == true {
+            turn(team1: p1, team2: p2)
+            var end = isGameOver()
+            if end == true {
                 break
             }
             //Turn Player 2
-            turn(player1: p2, player2: p1)
-            fini = isGameOver()
-            if fini == true {
+            turn(team1: p2, team2: p1)
+            end = isGameOver()
+            if end == true {
                 break
             }
             
@@ -85,24 +86,24 @@ class Game {
         
         let result = player1.weapon.atk - player2.weapon.atk
         if result > 0 || player2.canATK == false {
-              print("\(player1.name) : win this round")
+              print("\(player1.categories) : win this round")
               player2.hp = player2.hp - player1.weapon.atk
             if player2.isDead() == true  {
                 print("Your character is dead")
                 isGameOver()
             } else {
-              print("\(player2.name) Il vous reste \(player2.hp) PdV")
+              print("\(player2.categories) Il vous reste \(player2.hp) PdV")
             }
           
 
           } else if result < 0 {
-              print("\(player2.name) : win this round")
+              print("\(player2.categories) : win this round")
               player1.hp = player1.hp - player2.weapon.atk
             if player1.isDead() == true {
                 print("Your character is dead")
                 
             } else {
-                print("\(player1.name) : Il vous reste \(player1.hp) PdV")
+                print("\(player1.categories) : Il vous reste \(player1.hp) PdV")
             }
               
           }
@@ -115,32 +116,32 @@ class Game {
         let selectedchartoheal = Int(readLine() ?? "0") ?? 0
         let chartoheal = team.team[selectedchartoheal - 1]
         team.team[selectedchartoheal - 1].hp = chartoheal.hp + player.weapon.atk
-        print("Have healed \(chartoheal.name)  - \(player.weapon.atk) - Current HP : \(chartoheal.hp)")
+        print("Have healed \(chartoheal.categories)  - \(player.weapon.atk) - Current HP : \(chartoheal.hp)")
         
     }
     
-    func turn(player1: Team, player2: Team){
+    func turn(team1: Team, team2: Team){
         //Turn player 1
        print("Select your character for fight")
-       displayTeam(team: player1)
+       displayTeam(team: team1)
        let selectedchar = (Int(readLine() ?? "0") ?? 0) - 1
        
-       var char1 = player1.team[selectedchar]
+       var char1 = team1.team[selectedchar]
       
        if char1.canATK == false {
-        heal(player: char1, team: player1)
+        heal(player: char1, team: team1)
            
        } else if char1.canATK == true  {
            
            print("Select your opponent")
-           displayTeam(team: player2)
+           displayTeam(team: team2)
            let selectedoppo = (Int(readLine() ?? "0") ?? 0) - 1
-           var char2 = player2.team[selectedoppo]
+           var char2 = team2.team[selectedoppo]
            fight(player1: char1, player2: char2)
            if char1.isDead() == true {
-               player1.team.remove(at: selectedchar)
+               team1.team.remove(at: selectedchar)
            } else if char2.isDead() == true {
-               player2.team.remove(at: selectedoppo)
+               team2.team.remove(at: selectedoppo)
            }
 
        }

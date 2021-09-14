@@ -9,12 +9,15 @@ import Foundation
 class Team {
     
     var team = [Character]()
+    var stockedName = [String]()
+    
+    
     
     func fillTeam() {
         while team.count < 3 {
             selectCharacter()
         }
-        print("This is your team : \(team[0].name), \(team[1].name), \(team[2].name).")
+        print("This is your team : \(team[0].categories), \(team[1].categories), \(team[2].categories).")
     }
     
 
@@ -25,21 +28,47 @@ class Team {
         switch selectedchar {
         case "1":
             print("Vous avez selectionné le Guerrier")
-            team.append(Character(type: .Warrior))
+            let warrior = Character(type: .Warrior)
+            checkName(char: warrior)
+            team.append(warrior)
         case "2":
             print("Vous avez selectionné le Mage")
-            team.append(Character(type: .Mage))
+            let mage = Character(type: .Mage)
+            checkName(char: mage)
+            team.append(mage)
         case "3":
             print("Vous avez selectionné le Voleur")
-            team.append(Character(type: .Rogue))
+            let rogue = Character(type: .Rogue)
+            checkName(char: rogue)
+            team.append(rogue)
         case "4":
             print("Vous avez selectionné le Prêtre")
-            team.append(Character(type: .Priest))
+            let priest = Character(type: .Priest)
+            checkName(char: priest)
+            team.append(priest)
         case "5":
             print("Vous avez selectionné le Chasseur")
-            team.append(Character(type: .Hunter))
+            let hunter = Character(type: .Hunter)
+            checkName(char: hunter)
+            team.append(hunter)
         default:
             print("Invalid choice!!!!!!!")
         }
     }
+    
+    func checkName(char: Character) {
+        print("Choose name of your character")
+        let namedCharacter = readLine()
+  
+        
+        if  stockedName.contains(namedCharacter!) {
+            print("Error - Name already exist")
+        } else {
+            stockedName.append(namedCharacter!)
+            char.name = namedCharacter!
+        
+        
+        }
+    }
+
 }
