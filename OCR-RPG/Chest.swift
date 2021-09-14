@@ -9,7 +9,6 @@ import Foundation
 
 struct Chest {
     
-    var chest = [Weapon]()
     
    
 }

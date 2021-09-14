@@ -25,6 +25,14 @@ class Character {
     var name: String
     
 
+    var randomCarac = [4,5,6,7,8,9,10,11,12]
+    
+    func randomChest() {
+        
+        randomCarac.shuffle()
+        weapon.atk = randomCarac.first!
+        print("You have disover a chest, you find a new weapon : \(weapon.name) with \(weapon.atk) ATK")
+    }
     
     
 //Create Characters
@@ -33,7 +41,7 @@ class Character {
         switch type {
         case .Warrior:
             self.categories = "Warrior"
-            self.hp = 5
+            self.hp = 50
             self.spell = "Mortal Strike"
             self.weapon = Weapon(type: .axe)
             self.canATK = true

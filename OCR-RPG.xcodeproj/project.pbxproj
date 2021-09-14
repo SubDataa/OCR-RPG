@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		218DDAD626ECF2AC009384B5 /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218DDAD526ECF2AC009384B5 /* Game.swift */; };
-		218DDAD826ECF2B7009384B5 /* Chest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 218DDAD726ECF2B7009384B5 /* Chest.swift */; };
 		33BFABF726EBA845009FFD97 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BFABF626EBA845009FFD97 /* main.swift */; };
 		33BFABFF26EBA883009FFD97 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BFABFE26EBA883009FFD97 /* Character.swift */; };
 		33BFAC0226EBA894009FFD97 /* Weapon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33BFAC0126EBA894009FFD97 /* Weapon.swift */; };
@@ -29,7 +28,6 @@
 
 /* Begin PBXFileReference section */
 		218DDAD526ECF2AC009384B5 /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
-		218DDAD726ECF2B7009384B5 /* Chest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chest.swift; sourceTree = "<group>"; };
 		33BFABF326EBA845009FFD97 /* OCR-RPG */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "OCR-RPG"; sourceTree = BUILT_PRODUCTS_DIR; };
 		33BFABF626EBA845009FFD97 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		33BFABFE26EBA883009FFD97 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
@@ -72,7 +70,6 @@
 				33BFAC0126EBA894009FFD97 /* Weapon.swift */,
 				33BFAC0826ECC0E1009FFD97 /* Team.swift */,
 				218DDAD526ECF2AC009384B5 /* Game.swift */,
-				218DDAD726ECF2B7009384B5 /* Chest.swift */,
 			);
 			path = "OCR-RPG";
 			sourceTree = "<group>";
@@ -137,7 +134,6 @@
 				33BFAC0926ECC0E1009FFD97 /* Team.swift in Sources */,
 				33BFABF726EBA845009FFD97 /* main.swift in Sources */,
 				33BFABFF26EBA883009FFD97 /* Character.swift in Sources */,
-				218DDAD826ECF2B7009384B5 /* Chest.swift in Sources */,
 				218DDAD626ECF2AC009384B5 /* Game.swift in Sources */,
 				33BFAC0226EBA894009FFD97 /* Weapon.swift in Sources */,
 			);

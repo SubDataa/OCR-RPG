@@ -12,10 +12,12 @@ class Game {
    
     var p1 = Team()
     var p2 = Team()
+    var turnCount = 0
+   
     
     func displayTeam(team: Team) {
         for (index,item) in team.team.enumerated() {
-            print(index+1,item.categories)
+            print("\(index+1) - \(item.name) : \(item.categories)")
         }
        
     }
@@ -38,9 +40,10 @@ class Game {
     
         print("Voici la composition des équipes")
         displayTeam(team: p1)
-        print(p1.team[0].name)
+        //print("\(p1.team[0].name) : \(p1.team[0].categories) - \(p1.team[1].name) : \(p1.team[1].categories) -  \(p1.team[2].name) : \(p1.team[2].categories) -   ")
         print("------")
         displayTeam(team: p2)
+       //print("\(p2.team[0].name) : \(p2.team[0].categories) - \(p2.team[1].name) : \(p2.team[1].categories) -  \(p2.team[2].name) : \(p2.team[2].categories) -   ")
     }
     
     
@@ -49,6 +52,7 @@ class Game {
         
         while isGameOver() == false {
             //Turn Player 1
+            turnCount += 1
             turn(team1: p1, team2: p2)
             var end = isGameOver()
             if end == true {
@@ -79,11 +83,15 @@ class Game {
     }
     
 
-
+    func chestwillappear(player1: Character) {
+        if turnCount == 2 {
+            player1.randomChest()
+        }
+    }
   
    
     func fight(player1: Character, player2: Character) {
-        
+        chestwillappear(player1: player1)
         let result = player1.weapon.atk - player2.weapon.atk
         if result > 0 || player2.canATK == false {
               print("\(player1.categories) : win this round")
@@ -132,10 +140,13 @@ class Game {
         heal(player: char1, team: team1)
            
        } else if char1.canATK == true  {
-           
            print("Select your opponent")
            displayTeam(team: team2)
            let selectedoppo = (Int(readLine() ?? "0") ?? 0) - 1
+        if selectedoppo != 0 || selectedoppo != 1 ||  selectedoppo != 2 {
+            print("Invalid choice")
+            let selectedoppo = (Int(readLine() ?? "0") ?? 0) - 1
+        } else {
            var char2 = team2.team[selectedoppo]
            fight(player1: char1, player2: char2)
            if char1.isDead() == true {
@@ -144,6 +155,7 @@ class Game {
                team2.team.remove(at: selectedoppo)
            }
 
+       }
        }
     }
 }
