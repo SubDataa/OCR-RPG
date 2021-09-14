@@ -9,22 +9,17 @@ import Foundation
 
 class Game {
     
-    var isOver = false
+   
     var p1 = Team()
     var p2 = Team()
     
-    func displayTeam1() {
-        for (index,item) in p1.team.enumerated() {
+    func displayTeam(team: Team) {
+        for (index,item) in team.team.enumerated() {
             print(index+1,item.name)
         }
        
     }
-    func displayTeam2() {
-        for (index,item) in p2.team.enumerated() {
-            print(index+1,item.name)
-        }
-       
-    }
+    
     
     func createTeams() {
         
@@ -42,33 +37,42 @@ class Game {
        
     
         print("Voici la composition des équipes")
-        displayTeam1()
+        displayTeam(team: p1)
         print("------")
-        displayTeam2()
+        displayTeam(team: p2)
     }
     
     
     
     func battle() {
         
-        while isOver == false {
+        while isGameOver() == false {
             //Turn Player 1
             turn(player1: p1, player2: p2)
-            isGameOver()
+            var fini = isGameOver()
+            if fini == true {
+                break
+            }
             //Turn Player 2
             turn(player1: p2, player2: p1)
-            isGameOver()
+            fini = isGameOver()
+            if fini == true {
+                break
+            }
+            
         }
         
     }
     
 
-    func isGameOver() {
+    func isGameOver() -> Bool {
         if p1.team.isEmpty || p2.team.isEmpty {
-          isOver = true
+         
             print("GAME OVER")
+            return true
         } else {
-            isOver = false
+         
+            return false
         }
         
     }
@@ -80,37 +84,37 @@ class Game {
     func fight(player1: Character, player2: Character) {
         
         let result = player1.weapon.atk - player2.weapon.atk
-        if result > 0  {
-              print("Player 1 win this round")
+        if result > 0 || player2.canATK == false {
+              print("\(player1.name) : win this round")
               player2.hp = player2.hp - player1.weapon.atk
             if player2.isDead() == true  {
                 print("Your character is dead")
                 isGameOver()
             } else {
-              print("Player 2 : Il vous reste \(player2.hp) PdV")
+              print("\(player2.name) Il vous reste \(player2.hp) PdV")
             }
           
 
           } else if result < 0 {
-              print("Player 2 win this round")
+              print("\(player2.name) : win this round")
               player1.hp = player1.hp - player2.weapon.atk
             if player1.isDead() == true {
                 print("Your character is dead")
                 
             } else {
-              print("Player 1 : Il vous reste \(player1.hp) PdV")
+                print("\(player1.name) : Il vous reste \(player1.hp) PdV")
             }
               
           }
         
     }
     
-    func heal(player: Character){
+    func heal(player: Character, team: Team){
         print("Select your character for healing")
-        displayTeam1()
+        displayTeam(team: team)
         let selectedchartoheal = Int(readLine() ?? "0") ?? 0
-        let chartoheal = p1.team[selectedchartoheal - 1]
-        p1.team[selectedchartoheal - 1].hp = chartoheal.hp + player.weapon.atk
+        let chartoheal = team.team[selectedchartoheal - 1]
+        team.team[selectedchartoheal - 1].hp = chartoheal.hp + player.weapon.atk
         print("Have healed \(chartoheal.name)  - \(player.weapon.atk) - Current HP : \(chartoheal.hp)")
         
     }
@@ -118,18 +122,18 @@ class Game {
     func turn(player1: Team, player2: Team){
         //Turn player 1
        print("Select your character for fight")
-       displayTeam1()
+       displayTeam(team: player1)
        let selectedchar = (Int(readLine() ?? "0") ?? 0) - 1
        
        var char1 = player1.team[selectedchar]
       
        if char1.canATK == false {
-          heal(player: char1)
+        heal(player: char1, team: player1)
            
        } else if char1.canATK == true  {
            
            print("Select your opponent")
-           displayTeam2()
+           displayTeam(team: player2)
            let selectedoppo = (Int(readLine() ?? "0") ?? 0) - 1
            var char2 = player2.team[selectedoppo]
            fight(player1: char1, player2: char2)
