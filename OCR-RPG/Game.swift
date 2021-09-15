@@ -13,6 +13,7 @@ class Game {
     var p1 = Team()
     var p2 = Team()
     var turnCount = 0
+    var randomChest = [1,2,3,4]
    
     
     func displayTeam(team: Team) {
@@ -38,7 +39,7 @@ class Game {
         // Show team
        
     
-        print("Voici la composition des équipes")
+        print("Here is the composition of the teams")
         displayTeam(team: p1)
         //print("\(p1.team[0].name) : \(p1.team[0].categories) - \(p1.team[1].name) : \(p1.team[1].categories) -  \(p1.team[2].name) : \(p1.team[2].categories) -   ")
         print("------")
@@ -82,15 +83,18 @@ class Game {
         
     }
     
-
+//
     func chestwillappear(player1: Character) {
-        if turnCount == 2 {
+        randomChest.shuffle()
+        
+        if randomChest[0] == 1 {
             player1.randomChest()
         }
     }
   
    
     func fight(player1: Character, player2: Character) {
+        
         chestwillappear(player1: player1)
         let result = player1.weapon.atk - player2.weapon.atk
         if result > 0 || player2.canATK == false {
@@ -98,9 +102,9 @@ class Game {
               player2.hp = player2.hp - player1.weapon.atk
             if player2.isDead() == true  {
                 print("Your character is dead")
-                isGameOver()
+
             } else {
-              print("\(player2.categories) Il vous reste \(player2.hp) PdV")
+              print("\(player2.categories) You have \(player2.hp) HP left!")
             }
           
 
@@ -111,7 +115,7 @@ class Game {
                 print("Your character is dead")
                 
             } else {
-                print("\(player1.categories) : Il vous reste \(player1.hp) PdV")
+                print("\(player1.categories) : YOu have \(player1.hp) HP left!")
             }
               
           }
@@ -134,7 +138,7 @@ class Game {
        displayTeam(team: team1)
        let selectedchar = (Int(readLine() ?? "0") ?? 0) - 1
        
-       var char1 = team1.team[selectedchar]
+       let char1 = team1.team[selectedchar]
       
        if char1.canATK == false {
         heal(player: char1, team: team1)
@@ -143,11 +147,7 @@ class Game {
            print("Select your opponent")
            displayTeam(team: team2)
            let selectedoppo = (Int(readLine() ?? "0") ?? 0) - 1
-        if selectedoppo != 0 || selectedoppo != 1 ||  selectedoppo != 2 {
-            print("Invalid choice")
-            let selectedoppo = (Int(readLine() ?? "0") ?? 0) - 1
-        } else {
-           var char2 = team2.team[selectedoppo]
+           let char2 = team2.team[selectedoppo]
            fight(player1: char1, player2: char2)
            if char1.isDead() == true {
                team1.team.remove(at: selectedchar)
@@ -155,7 +155,6 @@ class Game {
                team2.team.remove(at: selectedoppo)
            }
 
-       }
        }
     }
 }
