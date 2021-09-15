@@ -134,28 +134,45 @@ class Game {
     
     func turn(team1: Team, team2: Team){
         //Turn player 1
-       print("Select your character for fight")
-       displayTeam(team: team1)
-       let selectedchar = (Int(readLine() ?? "0") ?? 0) - 1
-       
-       let char1 = team1.team[selectedchar]
-      
-       if char1.canATK == false {
-        heal(player: char1, team: team1)
+       let selectedchar = chooseCharacterForFight(team: team1)
+        if selectedchar >= 0 && selectedchar < 3 {
+            let char1 = team1.team[selectedchar]
            
-       } else if char1.canATK == true  {
-           print("Select your opponent")
-           displayTeam(team: team2)
-           let selectedoppo = (Int(readLine() ?? "0") ?? 0) - 1
-           let char2 = team2.team[selectedoppo]
-           fight(player1: char1, player2: char2)
-           if char1.isDead() == true {
-               team1.team.remove(at: selectedchar)
-           } else if char2.isDead() == true {
-               team2.team.remove(at: selectedoppo)
-           }
+            if char1.canATK == false {
+             heal(player: char1, team: team1)
+                
+            } else if char1.canATK == true  {
+                let selectedoppo = chooseCharacterForFight(team: team2)
+                if selectedoppo >= 0 && selectedoppo < 3 {
+                    let char2 = team2.team[selectedoppo]
+                    fight(player1: char1, player2: char2)
+                    if char1.isDead() == true {
+                        team1.team.remove(at: selectedchar)
+                    } else if char2.isDead() == true {
+                        team2.team.remove(at: selectedoppo)
+                    }
+                } else {
+                    print("Invalide Choice -- Try again")
+                    let selectedoppo = chooseCharacterForFight(team: team2)
+                }
+             
 
-       }
+            }
+        } else {
+            print("Invalide Choice -- Try again")
+            let selectedchar = chooseCharacterForFight(team: team1)
+            
+        }
+       
+   
+    }
+    
+    func chooseCharacterForFight(team: Team) -> Int{
+        print("Select character:")
+        displayTeam(team: team)
+        let selectedchar = (Int(readLine() ?? "0") ?? 0) - 1
+        
+        return selectedchar
     }
 }
 
