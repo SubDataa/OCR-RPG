@@ -41,7 +41,7 @@ class Character {
         switch type {
         case .Warrior:
             self.categories = "Warrior"
-            self.hp = 50
+            self.hp = 60
             self.spell = "Mortal Strike"
             self.weapon = Weapon(type: .axe)
             self.canATK = true

@@ -29,27 +29,27 @@ class Team {
         case "1":
             print("Vous avez selectionné le Guerrier")
             let warrior = Character(type: .Warrior)
-            //checkName(char: warrior)
+            checkName(char: warrior)
             team.append(warrior)
         case "2":
             print("Vous avez selectionné le Mage")
             let mage = Character(type: .Mage)
-           // checkName(char: mage)
+            checkName(char: mage)
             team.append(mage)
         case "3":
             print("Vous avez selectionné le Voleur")
             let rogue = Character(type: .Rogue)
-           // checkName(char: rogue)
+            checkName(char: rogue)
             team.append(rogue)
         case "4":
             print("Vous avez selectionné le Prêtre")
             let priest = Character(type: .Priest)
-            //checkName(char: priest)
+            checkName(char: priest)
             team.append(priest)
         case "5":
             print("Vous avez selectionné le Chasseur")
             let hunter = Character(type: .Hunter)
-            //checkName(char: hunter)
+            checkName(char: hunter)
             team.append(hunter)
         default:
             print("Invalid choice!!!!!!!")
