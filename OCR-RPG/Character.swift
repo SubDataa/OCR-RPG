@@ -41,7 +41,7 @@ class Character {
         switch type {
         case .Warrior:
             self.categories = "Warrior"
-            self.hp = 60
+            self.hp = 1
             self.spell = "Mortal Strike"
             self.weapon = Weapon(type: .axe)
             self.canATK = true
@@ -79,7 +79,7 @@ class Character {
     }
     
    
-    
+// Check the character still has health points
     func isDead() -> Bool {
         if self.hp <= 0 {
             return true

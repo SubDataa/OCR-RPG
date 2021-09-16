@@ -48,7 +48,7 @@ class Game {
     }
     
     
-// create battle
+// game continues as long as a team's characters are alive
     func battle() {
         
         while isGameOver() == false {
@@ -72,7 +72,7 @@ class Game {
         
     }
     
-// Check if all character
+// Checking that all characters are alive
     func isGameOver() -> Bool {
         if p1.team.isEmpty || p2.team.isEmpty {
             print("GAME OVER")
@@ -90,7 +90,7 @@ class Game {
         
     }
     
-//
+//Probability that the chest will appear
     func chestwillappear(player1: Character) {
         randomChest.shuffle()
         
@@ -99,12 +99,13 @@ class Game {
         }
     }
   
-   
+//Combat between character 1 and character 2
     func fight(player1: Character, player2: Character) {
         
         chestwillappear(player1: player1)
         let result = player1.weapon.atk - player2.weapon.atk
         if result > 0 || player2.canATK == false {
+            print("\(player1.name) attacks \(player2.name) with \(player1.spell) (\(player1.weapon.atk) ATK)")
               print("\(player1.categories) : win this round")
               player2.hp = player2.hp - player1.weapon.atk
             if player2.isDead() == true  {
@@ -121,14 +122,17 @@ class Game {
             if player1.isDead() == true {
                 print("Your character is dead")
                 
-            } else {
-                print("\(player1.categories) : YOu have \(player1.hp) HP left!")
+            }  else {
+                print("\(player1.categories) : You have \(player1.hp) HP left!")
             }
               
-          }
+          } else if result == 0 {
+            print("Draw")
+            
+        }
         
     }
-    
+//  Heals a friendly character
     func heal(player: Character, team: Team){
         let selectedchartoheal = selectIndexOfCharacter(team: team)
         let chartoheal = team.team[selectedchartoheal]
@@ -136,9 +140,9 @@ class Game {
         print("Have healed \(chartoheal.categories)  - \(player.weapon.atk) - Current HP : \(chartoheal.hp)")
         
     }
-    
+ // Game turn of the game
     func turn(team1: Team, team2: Team){
-        //Turn player 1
+       
        let selectedchar = selectIndexOfCharacter(team: team1)
         if selectedchar >= 0 && selectedchar < 3 {
             let char1 = team1.team[selectedchar]
@@ -171,7 +175,7 @@ class Game {
        
    
     }
-    
+// input entered by user converted to selected character
     func selectIndexOfCharacter(team: Team) -> Int {
         print("Select character:")
         displayTeam(team: team)
@@ -188,21 +192,29 @@ class Game {
     
     
     
-    
+//Statistics display
     func showStatistic(team: Team) {
+        print("Statistics of the game : ")
         print("Turn count : \(turnCount)")
         for team in team.team.enumerated() {
             print("\(team.element.name) : \(team.element.categories) - \(team.element.hp) HP")
-            print("Press 1 to start a new game")
-           let str = readLine()
-            if str == "1" {
-                startGame()
-            }
+            newGame()
         }
         
     }
-
-
+// Start new game
+    func newGame() {
+        print("Press 1 to start a new game - 2 for quit")
+        let str = readLine()
+        if str == "1" {
+            startGame()
+        } else if str == "2" {
+            print("Thanks for playing")
+        } else {
+            print("Invalide Choice -- Try again")
+            newGame()
+        }
+    }
     
 }
 
