@@ -12,7 +12,7 @@ class Team {
     var stockedName = [String]()
     
     
-    
+//Team filling
     func fillTeam() {
         while team.count < 3 {
             selectCharacter()
@@ -20,34 +20,34 @@ class Team {
         print("This is your team : \(team[0].categories), \(team[1].categories), \(team[2].categories).")
     }
     
-
+//Selection of characters to build your team
     func selectCharacter() {
-        print("Entrez 1 pour le Guerrier, 2 pour le Mage, 3 pour le Voleur, 4 pour le Prêtre ou 5 pour le Chasseur.")
+        print("Enter 1 for the Warrior, 2 for the Mage, 3 for the Rogue, 4 for the Priest or 5 for the Hunter.")
         let selectedchar = readLine()
         
         switch selectedchar {
         case "1":
-            print("Vous avez selectionné le Guerrier")
+            print("You have selected the Warrior")
             let warrior = Character(type: .Warrior)
             checkName(char: warrior)
             team.append(warrior)
         case "2":
-            print("Vous avez selectionné le Mage")
+            print("You have selected the Mage")
             let mage = Character(type: .Mage)
             checkName(char: mage)
             team.append(mage)
         case "3":
-            print("Vous avez selectionné le Voleur")
+            print("You have selected the Rogue")
             let rogue = Character(type: .Rogue)
             checkName(char: rogue)
             team.append(rogue)
         case "4":
-            print("Vous avez selectionné le Prêtre")
+            print("You have selected the Priest")
             let priest = Character(type: .Priest)
             checkName(char: priest)
             team.append(priest)
         case "5":
-            print("Vous avez selectionné le Chasseur")
+            print("You have selected the Hunter")
             let hunter = Character(type: .Hunter)
             checkName(char: hunter)
             team.append(hunter)
@@ -55,7 +55,7 @@ class Team {
             print("Invalid choice!!!!!!!")
         }
     }
-    
+ //Verification that the name of the chosen character does not already exist
     func checkName(char: Character) {
         print("Choose name of your character")
         let namedCharacter = readLine()
@@ -63,6 +63,8 @@ class Team {
         
         if  stockedName.contains(namedCharacter!) {
             print("Error - Name already exist")
+            print("Try again")
+            checkName(char: char)
         } else {
             stockedName.append(namedCharacter!)
             char.name = namedCharacter!
