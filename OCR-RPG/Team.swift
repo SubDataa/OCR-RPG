@@ -9,11 +9,12 @@ import Foundation
 class Team {
     
     var team = [Character]()
-    var stockedName = [String]()
+    var mainGame: Game?
     
     
 //Team filling
-    func fillTeam() {
+    func fillTeam(forGame game: Game) {
+        mainGame = game
         while team.count < 3 {
             selectCharacter()
         }
@@ -57,16 +58,17 @@ class Team {
     }
  //Verification that the name of the chosen character does not already exist
     func checkName(char: Character) {
+        guard let mainGame = mainGame else { return }
         print("Choose name of your character")
         let namedCharacter = readLine()
   
         
-        if  stockedName.contains(namedCharacter!) {
+        if  mainGame.stockedName.contains(namedCharacter!) {
             print("Error - Name already exist")
             print("Try again")
             checkName(char: char)
         } else {
-            stockedName.append(namedCharacter!)
+            mainGame.stockedName.append(namedCharacter!)
             char.name = namedCharacter!
         
         
