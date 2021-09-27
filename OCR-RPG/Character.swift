@@ -31,7 +31,7 @@ class Character {
         
         randomCarac.shuffle()
         weapon.atk = randomCarac.first!
-        print("You have disover a chest, you find a new weapon : \(weapon.name) with \(weapon.atk) ATK")
+        print("You have discover a chest, you find a new weapon : \(weapon.name) with \(weapon.atk) ATK")
     }
     
     
@@ -41,35 +41,35 @@ class Character {
         switch type {
         case .Warrior:
             self.categories = "Warrior"
-            self.hp = 1
+            self.hp = 10
             self.spell = "Mortal Strike"
             self.weapon = Weapon(type: .axe)
             self.canATK = true
             self.name = ""
         case .Mage:
             self.categories = "Mage"
-            self.hp = 40
+            self.hp = 7
             self.spell = "Fire bolt"
             self.weapon = Weapon(type: .wand)
             self.canATK = true
             self.name = ""
         case .Rogue:
             self.categories = "Rogue"
-            self.hp = 50
+            self.hp = 5
             self.spell = "Embush"
             self.weapon = Weapon(type: .dagger)
             self.canATK = true
             self.name = ""
         case .Priest:
             self.categories = "Priest"
-            self.hp = 30
+            self.hp = 3
             self.spell = "Heal"
             self.weapon = Weapon(type: .staff)
             self.canATK = false
             self.name = ""
         case .Hunter:
             self.categories = "Hunter"
-            self.hp = 45
+            self.hp = 4
             self.spell = "Aimed shot"
             self.weapon = Weapon(type: .bow)
             self.canATK = true
